@@ -1,6 +1,7 @@
 import sys, os, re
 import kenlm
 from spelling_correcter import get_candidates
+import time
 
 arpa_path = 'data/lm_binary.arpa'
 lm_model = kenlm.LanguageModel(arpa_path)
@@ -43,8 +44,17 @@ def correct_one(line):
     return result
 
 if __name__ == '__main__':
-    hpy_txt = sys.argv[1]
+    hpy_txt, hpy_fix_txt = sys.argv[1:3]
+
+    start_time = time.time()
+    count = ''
     with open(hpy_txt, 'r') as f:
         for line in f:
             hpy_fix = correct_one(line)
-            print(hpy_fix)
+            count += hpy_fix + '\n'
+
+    with open(hpy_fix_txt, 'w') as f:
+        f.write(count)
+
+    end_time = time.time()
+    print('total_time:', (end_time - start_time))
