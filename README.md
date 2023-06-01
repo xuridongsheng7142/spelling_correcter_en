@@ -10,6 +10,7 @@
 
 1、首先准备自己的单词词典，保存到data/count.txt，格式：每行一个单词，需要大写，例
 
+   ```
    head data/count.txt
    
    APPLE
@@ -31,6 +32,8 @@
    HAPPY
    
    HELLO
+
+   ```
 
 2、训练语言模型，获取arpa文件，保存到data/lm_binary.arpa；
 
