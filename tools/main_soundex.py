@@ -49,6 +49,11 @@ def correct_one(line):
         ## 数字不调整
         #if word.isnumeric()
         #    continue
+
+        # 'S 结尾不修改
+        if len(word) >= 3 and word.endswith("'S"):
+            continue
+
         if word.startswith("'"):
             candidates = list(Spell_C_edits.get_candidates(word))
         else:
